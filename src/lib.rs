@@ -155,6 +155,8 @@ mod macros;
 #[cfg(any(test, feature = "example_generated"))]
 pub mod example_generated;
 
+pub trait NotUsize {}
+
 /// Represents a wrapped value convertable to and from a `usize`.
 ///
 /// Generally you implement this via the [`define_index_type!`] macro, rather

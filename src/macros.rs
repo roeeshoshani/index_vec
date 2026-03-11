@@ -655,6 +655,7 @@ macro_rules! __define_index_type_inner {
                 usize::from(self)
             }
         }
+        impl $crate::NotUsize for $type {}
 
         impl From<$type> for usize {
             #[inline]

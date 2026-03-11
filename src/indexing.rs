@@ -1,4 +1,4 @@
-use crate::{Idx, IndexSlice};
+use crate::{Idx, IndexSlice, NotUsize};
 
 mod private_slice_index {
     pub trait Sealed {}
@@ -20,7 +20,7 @@ pub trait IdxSliceIndex<I: Idx, T>: private_slice_index::Sealed {
 // Does this defeat the point of sealing?
 impl<I: Idx> private_slice_index::Sealed for I {}
 
-impl<I: Idx, T> IdxSliceIndex<I, T> for I {
+impl<I: Idx + NotUsize, T> IdxSliceIndex<I, T> for I {
     type Output = T;
 
     #[inline]
@@ -109,7 +109,6 @@ impl<I: Idx, T> IdxSliceIndex<I, T> for core::ops::RangeFull {
     }
 }
 
-impl private_slice_index::Sealed for usize {}
 // As an ergonomic concession, implement this for `usize` as well, it's too painful without
 impl<I: Idx, T> IdxSliceIndex<I, T> for usize {
     type Output = T;
