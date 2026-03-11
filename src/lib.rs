@@ -145,6 +145,7 @@ use core::ops::Range;
 use core::slice;
 mod idxslice;
 mod indexing;
+mod idxtypes;
 pub use idxslice::{IndexBox, IndexSlice};
 pub use indexing::{IdxRangeBounds, IdxSliceIndex};
 
