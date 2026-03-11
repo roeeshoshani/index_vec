@@ -174,6 +174,9 @@ pub mod example_generated;
 /// the typical cases (E.g. Idx is a newtyped usize or u32), to become more
 /// complex.
 pub trait Idx: Copy + 'static + Ord + Debug + Hash {
+    /// The maximum possible index value for this type.
+    fn max_index() -> Self;
+
     /// Construct an Index from a usize. This is equivalent to `From<usize>`.
     ///
     /// Note that this will panic if `idx` does not fit (unless checking has
